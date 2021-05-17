@@ -1,4 +1,3 @@
-
 const startPage = document.querySelector('.start-page');
 const startBtn = document.querySelector('.start-page__btn');
 const containerOfContent = document.querySelector('.container');
@@ -7,11 +6,15 @@ const body = document.querySelector('body');
 const certificateAccuracy = document.querySelector('#certificateAccuracy');
 const certificateSpeed = document.querySelector('#certificateSpeed');
 const finalMessage = document.querySelector('.final-message');
+const finalCertificateAccuracy = document.querySelector('.final-message #certificateAccuracy');
+const finalCertificateSpeed = document.querySelector('.final-message #certificateSpeed');
+const returnToStart = document.querySelector('.back');
 let textLettersArr;
 const userLettersArr = [];
 const result = [];
 let indexOfElement = 0;
 let spans;
+let interval;
 let accuracy = 100;
 let speed = 0;
 let minute = 60;
@@ -47,8 +50,10 @@ function removeHighlightLetter(styleOfLetter) {
         span.classList.remove(styleOfLetter);
     });
 }
-function greenLetter(){
-    spans[indexOfElement - 1].classList.add('greenLetter');
+function greenLetter() {
+    if (indexOfElement >= 1) {
+        spans[indexOfElement - 1].classList.add('greenLetter');
+    }
 }
 function compareLetters(e) {
     console.log(textLettersArr)
@@ -73,41 +78,47 @@ function addClassHide(block) {
 function removeClassHide(block) {
     block.classList.remove('hide');
 }
-startBtn.addEventListener('click', () => {
-    addClassHide(startPage);
-    removeClassHide(containerOfContent);
-    highlightLetter(indexOfElement, 'green');
-    setInterval(countSpeed,1000);
-});
-
-body.addEventListener('keydown', (e) => {
-    removeHighlightLetter('green');
-    removeHighlightLetter('red');
-    compareLetters(e);
-    greenLetter();
-});
-
-console.log(userLettersArr);
-// console.log(textLettersArr)
-console.log(indexOfElement);
-console.log(result);
-
 // COUNTER OF ACCURACY
-function countAccuracy(){
+function countAccuracy() {
     accuracy = (accuracy - 0.1).toFixed(1);
     certificateAccuracy.innerHTML = accuracy;
+    finalCertificateAccuracy.innerHTML = accuracy;
 }
 //SPEED
-function countSpeed(){
-    if(minute > 0){
+function countSpeed() {
+    if (minute > 0) {
         minute--;
         certificateSpeed.innerHTML = speed;
+        finalCertificateSpeed.innerHTML = speed;
         console.log(minute);
-    }else{
+    } else {
         addClassHide(containerOfContent);
         removeClassHide(finalMessage);
     }
 }
+
+startBtn.addEventListener('click', () => {
+    addClassHide(startPage);
+    removeClassHide(containerOfContent);
+    highlightLetter(indexOfElement, 'green');
+    interval = setInterval(countSpeed, 1000);
+});
+
+body.addEventListener('keydown', (e) => {
+    if(e.key !== 'CapsLock'){
+        removeHighlightLetter('green');
+        removeHighlightLetter('red');
+        compareLetters(e);
+        greenLetter();
+    }
+});
+
+returnToStart.addEventListener('click', (e) => {
+    clearInterval(interval);
+    minute = 60;
+    addClassHide(containerOfContent);
+    removeClassHide(startPage);
+});
 
 
 

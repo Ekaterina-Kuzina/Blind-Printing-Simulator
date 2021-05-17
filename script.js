@@ -4,11 +4,17 @@ const startBtn = document.querySelector('.start-page__btn');
 const containerOfContent = document.querySelector('.container');
 const wrapperContent = document.querySelector('.wrapper-content');
 const body = document.querySelector('body');
+const certificateAccuracy = document.querySelector('#certificateAccuracy');
+const certificateSpeed = document.querySelector('#certificateSpeed');
+const finalMessage = document.querySelector('.final-message');
 let textLettersArr;
 const userLettersArr = [];
 const result = [];
 let indexOfElement = 0;
 let spans;
+let accuracy = 100;
+let speed = 0;
+let minute = 60;
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -42,8 +48,7 @@ function removeHighlightLetter(styleOfLetter) {
     });
 }
 function greenLetter(){
-    spans[indexOfElement-1].classList.add('greenLetter');
-    console.log('xyi')
+    spans[indexOfElement - 1].classList.add('greenLetter');
 }
 function compareLetters(e) {
     console.log(textLettersArr)
@@ -54,7 +59,10 @@ function compareLetters(e) {
         console.log('good');
         indexOfElement++;
         highlightLetter(indexOfElement, 'green');
+        speed++;
+        console.log(speed);
     } else {
+        countAccuracy();
         highlightLetter(indexOfElement, 'red');
         console.log('bad');
     }
@@ -69,6 +77,7 @@ startBtn.addEventListener('click', () => {
     addClassHide(startPage);
     removeClassHide(containerOfContent);
     highlightLetter(indexOfElement, 'green');
+    setInterval(countSpeed,1000);
 });
 
 body.addEventListener('keydown', (e) => {
@@ -83,8 +92,22 @@ console.log(userLettersArr);
 console.log(indexOfElement);
 console.log(result);
 
-
-
+// COUNTER OF ACCURACY
+function countAccuracy(){
+    accuracy = (accuracy - 0.1).toFixed(1);
+    certificateAccuracy.innerHTML = accuracy;
+}
+//SPEED
+function countSpeed(){
+    if(minute > 0){
+        minute--;
+        certificateSpeed.innerHTML = speed;
+        console.log(minute);
+    }else{
+        addClassHide(containerOfContent);
+        removeClassHide(finalMessage);
+    }
+}
 
 
 

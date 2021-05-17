@@ -1,6 +1,7 @@
 
 const startPage = document.querySelector('.start-page');
 const startBtn = document.querySelector('.start-page__btn');
+const containerOfContent = document.querySelector('.container');
 const wrapperContent = document.querySelector('.wrapper-content');
 const body = document.querySelector('body');
 let textLettersArr;
@@ -66,7 +67,7 @@ function removeClassHide(block) {
 }
 startBtn.addEventListener('click', () => {
     addClassHide(startPage);
-    removeClassHide(wrapperContent);
+    removeClassHide(containerOfContent);
     highlightLetter(indexOfElement, 'green');
 });
 

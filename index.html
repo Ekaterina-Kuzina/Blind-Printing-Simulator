@@ -9,13 +9,29 @@
 </head>
 <body>
 
-    <div class="start-page">
+    <div class="start-page ">
         <div class="start-page__text">Приготовься печатать! Поехали</div>
         <button class="start-page__btn">Начать печать</button>
     </div>
 
-    <div class="wrapper-content hide"></div>
-
+    <div class="container hide">
+        <div class="wrapper-content"></div>
+        <div class="counters">
+            <div class="counters__speed">Cкорость</div>
+            <div class="counters__speed-content">
+                <span id="certificateSpeed">0</span> зн./мин
+            </div>
+            <div class="counters__accuracy">Точность</div>
+            <div class="counters__accuracy-content">
+                <span id="certificateAccuracy">100</span>%
+            </div>
+            <div class="back">
+                <i class="fa fa-undo" aria-hidden="true"></i>
+                <a class="reload" href="#">заново</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://use.fontawesome.com/482733c74d.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

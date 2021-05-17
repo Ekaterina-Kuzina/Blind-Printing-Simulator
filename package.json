@@ -1,0 +1,23 @@
+{
+  "name": "blind-printing-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "json-server server/db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ekaterina-Kuzina/Blind-Printing-Simulator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ekaterina-Kuzina/Blind-Printing-Simulator/issues"
+  },
+  "homepage": "https://github.com/Ekaterina-Kuzina/Blind-Printing-Simulator#readme",
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}

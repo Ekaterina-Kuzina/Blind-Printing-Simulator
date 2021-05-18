@@ -1,5 +1,4 @@
-import { spans } from './makeTextContent.js';
-import { textLettersArr } from './makeTextContent.js';
+import { spans, textLettersArr } from './makeTextContent.js';
 import { countAccuracy } from './countAccuracy.js';
 
 export let indexOfElement = 0;

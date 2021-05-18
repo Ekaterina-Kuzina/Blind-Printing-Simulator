@@ -1,14 +1,7 @@
 import { getData } from './content/makeTextContent.js';
-import { indexOfElement } from './content/changeAndCompareLetters.js';
-import { highlightLetter } from './content/changeAndCompareLetters.js';
-import { removeHighlightLetter } from './content/changeAndCompareLetters.js';
-import { greenLetter } from './content/changeAndCompareLetters.js';
-import { compareLetters } from './content/changeAndCompareLetters.js';
-import { addClassHide } from './content/changeClassHide.js';
-import { removeClassHide } from './content/changeClassHide.js';
-import { countSpeed } from './content/countSpeed.js';
-import { minute } from './content/countSpeed.js';
-import { containerOfContent } from './content/countSpeed.js';
+import { indexOfElement, highlightLetter, removeHighlightLetter, greenLetter, compareLetters } from './content/changeAndCompareLetters.js';
+import { addClassHide, removeClassHide } from './content/changeClassHide.js';
+import { countSpeed, minute, containerOfContent } from './content/countSpeed.js';
 
 const startPage = document.querySelector('.start-page');
 const startBtn = document.querySelector('.start-page__btn');
@@ -22,7 +15,7 @@ startBtn.addEventListener('click', () => {
     addClassHide(startPage);
     removeClassHide(containerOfContent);
     highlightLetter(indexOfElement, 'green');
-    interval = setInterval(countSpeed, 1000);
+    interval = setInterval(countSpeed, 100);
 });
 
 body.addEventListener('keydown', (e) => {

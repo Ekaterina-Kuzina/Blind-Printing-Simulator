@@ -15,7 +15,7 @@ startBtn.addEventListener('click', () => {
     addClassHide(startPage);
     removeClassHide(containerOfContent);
     highlightLetter(indexOfElement, 'green');
-    interval = setInterval(countSpeed, 100);
+    interval = setInterval(countSpeed, 1000);
 });
 
 body.addEventListener('keydown', (e) => {
